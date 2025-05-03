@@ -1,0 +1,20 @@
+- 
+  customer_id               : "0110005"
+  customer_name             : "Aneka Rasa Catering Services"
+  customer_address          : "Jl. Menteng Raya No. 55, Jakarta Pusat"
+  subscription_type         : "weekly"
+  subscription_start        : "2024-12-01"
+  liter_weight_capacity     : 980
+  minimum_monthly_volume    : 2500
+  buffer_count              : 4
+  applied_price             : 13500
+-
+  customer_id               : "0110006"
+  customer_name             : "Bahari Seafood Restaurant Group"
+  customer_address          : "Jl. Gajah Mada No. 123, Jakarta Barat"
+  subscription_type         : "weekly"
+  subscription_start        : "2025-02-10"
+  liter_weight_capacity     : 980
+  minimum_monthly_volume    : 2500
+  buffer_count              : 4
+  applied_price             : 12750

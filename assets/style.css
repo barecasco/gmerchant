@@ -1,0 +1,94 @@
+.DateInput_input  {
+    font-size       : 12px;
+    padding         : 3px 3px 3px 10px;
+    width           : 100%;
+    background-color  : #151515;
+    color             : #bbbbbb;
+}
+
+.SingleDatePickerInput  {
+    /* border            : 1px solid #777777; */
+    border            : none;
+}
+
+
+.current-page {
+    background-color: #222222;
+    /* border-radius: 10px; */
+    border: none;
+    color: white !important;
+    &::placeholder {
+        color: white !important;
+    }
+}
+
+
+
+.current-page-container {
+    background-color: #222222;
+    color:white;
+}
+
+
+.first-page {
+    background-color: #222222;
+    color:white;
+}
+
+.previous-page {
+    background-color: #222222;
+    color: white;
+}
+
+
+.next-page {
+    background-color: #222222;
+    color: white;
+}
+
+.last-page {
+    background-color: #222222;
+    color: white;
+}
+
+
+.Select-control {
+    background-color: #333333; /* Change the main control background */
+    color: #bbbbbb;
+    border: none;
+}
+  
+  .Select-menu-outer {
+    background-color: #333333; /* Change the dropdown menu background */
+    color: #bbbbbb;
+  }
+  
+.Select-value-label {
+    background-color: #333333 !important; /* Change option background */
+    color: #bbbbbb !important;
+}
+
+
+  .Select-option {
+      background-color: #333333 !important; /* Change option background */
+      /* color: white !important; */
+  }
+  
+  .Select-option:hover {
+      background-color: #333333 !important; /* Change option background on hover */
+    /* color: white; */
+
+  }
+  
+  .Select-option[aria-selected='true'] {
+      background-color: #333333 !important; /* Change background of selected option */
+    /* color: white; */
+
+  }
+
+
+  button:active {
+    background-color: #444444 !important; /* Darker green when pressed */
+    /* box-shadow: 0 5px #666; Example: create a pressed-in effect */
+    /* transform: translateY(4px); */
+}
