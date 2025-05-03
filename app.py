@@ -146,8 +146,9 @@ styles = {
 
 
 # Initialize the Dash app
-app = dash.Dash(__name__, title='Delivery Analysis', suppress_callback_exceptions=True)
-
+app     = dash.Dash(__name__, title='Delivery Analysis', suppress_callback_exceptions=True)
+server  = app.server  
+port    = int(os.environ.get('PORT', 8050))
 
 # ------------------------------------------------------------------------------------
 # LAYOUT
@@ -1270,6 +1271,4 @@ if __name__ == '__main__':
         # Run locally (localhost)
         app.run(debug=True, port=8000)  # Enable debug mode
     else:
-        # Run on the server (0.0.0.0)
-        port = int(os.environ.get("PORT", 8050))
-        app.run(host="0.0.0.0", port=port, debug=True)  # Enable debug mode
+        app.run(host="0.0.0.0", port=port, debug=False)  # Enable debug mode
