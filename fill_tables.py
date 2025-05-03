@@ -8,6 +8,7 @@ import utils
 database_file   = 'operation.db'
 
 def replenish_table():
+    print("replenishing table")
     # -----------------------------------------------------------------------------------------
     # create tables
     # -----------------------------------------------------------------------------------------
@@ -130,5 +131,5 @@ def replenish_table():
     # utils.display_string_in_notepad(df.to_string())
 
 
-    if __name__ == '__main__':
-        replenish_table()
+if __name__ == '__main__':
+    replenish_table()
