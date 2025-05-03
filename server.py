@@ -26,8 +26,8 @@ timedelta = datetime.timedelta
 if os.path.exists(db.database_file):
     print("database exist")
 else:
-    print("database is missing, aborting server start...")
-    sys.exit(1)
+    print("database is missing, creating database...")
+    replenish_table()
 
 
 # Define dark theme colors
