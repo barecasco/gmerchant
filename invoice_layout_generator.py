@@ -197,7 +197,7 @@ def generate_invoice(writer, invoice_data):
     inprice = invoice_data['inprice']
     
     worksheet.merge_range(conclusion_row, 1, conclusion_row, 3, 
-                         f"Pemakaian Gas CNG Periode {invoice_data["invoice_period"]} )*", 
+                         f"Pemakaian Gas CNG Periode {invoice_data['invoice_period']} )*", 
                          header_border_format)
     worksheet.write(conclusion_row, 4, f"{inprice}", header_right_border_format)
     worksheet.write(conclusion_row, 5, "", thin_border_format)  # For the note column border
