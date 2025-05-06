@@ -325,6 +325,24 @@ def parse_delivery_report(text):
     return result    
 
 
+def check_delivery_id_existence(delivery_id):
+    res = True
+    query       = "select distinct delivery_id from delivery;"
+    sf          = query_table(database_file, query)
+    rf          = []
+    for s in sf:
+        rf.append(s[0])
+
+    print(delivery_id, rf)
+    if delivery_id in rf:
+        print("delivery id in id_list")
+        res = True
+    else:
+        print("delivery id NOT in id_list")
+        res = False
+    return res
+
+
 def generate_delivery_rowrep(text):
     parsed         = parse_delivery_report(text)
     injection_date = str(parsed["delivery_date"]).lower()
@@ -341,6 +359,8 @@ def generate_delivery_rowrep(text):
     injection_date_iso = injection_date_datetime.strftime("%Y-%m-%d") # Format injection date to iso    
     delivery_report_id = customer_id + re.sub(r"[\-\s:]", "", arrival_time_iso)[:-2]
 
+    if check_delivery_id_existence(delivery_report_id):
+        return None
 
     rowrep = {
         "delivery_id"               : delivery_report_id,

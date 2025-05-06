@@ -238,7 +238,7 @@ app.layout = html.Div(
                             }
                         ),
                             # Output messages (errors, etc.)
-                        html.Div(id='restock-message', style={'margin-top': '10px', 'color': 'skyblue'}),
+                        html.Div(id='restock-message', style={'fontSize': '11px', 'margin-top': '10px', 'color': 'skyblue'}),
                         dcc.Download(id="download-restock-excel"),
                     ], 
                     style = {
@@ -367,7 +367,7 @@ app.layout = html.Div(
                             }
                         ),
                         # Output messages (errors, etc.)
-                        html.Div(id='delivery-message', style={'margin-top': '10px', 'color': 'skyblue'}),
+                        html.Div(id='delivery-message', style={'fontSize':'11px', 'margin-top': '10px', 'color': 'skyblue'}),
                         dcc.Download(id="download-delivery-excel"),
                     ], 
                     style = {
@@ -890,6 +890,10 @@ def execute_delivery_update(n_clicks, report):
     
     try:
         rowrep = db.generate_delivery_rowrep(report)
+        
+        if not rowrep:
+            raise ValueError("duplicate delivery_id detected")
+        
         db.insert_row_from_dict(db.database_file, "delivery", rowrep)
         
         # Execute query and fetch results into a DataFrame
