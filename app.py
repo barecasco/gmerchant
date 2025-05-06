@@ -523,286 +523,285 @@ app.layout = html.Div(
                 )
         ]),
 
+        html.H1("Create Invoice", style = {
+            'textAlign'     : 'center',
+            'marginBottom'  : '0px',
+            'marginTop'     : '140px',
+            'font-weight'   : 'normal',
+            'margin-bottom' : '10px'
+        }),
+        html.Hr( style={
+            'width': '30%', 
+            'border': '1px solid #444444', 
+            'background-color': '#444444', 
+            'margin-bottom': '40px'
+        }),
+        # ----------------------------------------------------------------------------------
+        # INVOICE GENERATOR
+        # ----------------------------------------------------------------------------------
+        html.Div(style=styles['card'], children=[
+            html.Div(style=styles['formRow'], children=[
 
-    html.H1("Create Invoice", style = {
-        'textAlign'     : 'center',
-        'marginBottom'  : '0px',
-        'marginTop'     : '140px',
-        'font-weight'   : 'normal',
-        'margin-bottom' : '10px'
-    }),
-    html.Hr( style={
-        'width': '30%', 
-        'border': '1px solid #444444', 
-        'background-color': '#444444', 
-        'margin-bottom': '40px'
-    }),
-    # ----------------------------------------------------------------------------------
-    # INVOICE GENERATOR
-    # ----------------------------------------------------------------------------------
-    html.Div(style=styles['card'], children=[
-        html.Div(style=styles['formRow'], children=[
-
-            html.Div([
-                html.Label("customer id", style=styles['label']),
-                dcc.Input(
-                    id      ="customer-id-input",
-                    type    ="text",
-                    value   = "0110005",
-                    style   = styles['input']
-                )
-            ],
-            style={
-                    'flex'          : '1',
-                    'marginRight'   : '0px',            
-                    # 'border'        : '1px solid #ddd',
-            }),
-            
-            html.Div(
-                [
-                    html.Label("correction volume", style=styles['label']),
+                html.Div([
+                    html.Label("customer id", style=styles['label']),
                     dcc.Input(
-                        id          = "minvol-balance-input",
-                        type        = "text",
-                        placeholder = "0",
-                        value       = "0",
-                        style       = styles['input']
+                        id      ="customer-id-input",
+                        type    ="text",
+                        value   = "0110005",
+                        style   = styles['input']
                     )
                 ],
                 style={
-                    'flex'          : '1',
-                    'marginRight'   : '0px',
-                    # 'border'   : '1px solid #ddd',
-                }
-            ),
+                        'flex'          : '1',
+                        'marginRight'   : '0px',            
+                        # 'border'        : '1px solid #ddd',
+                }),
+                
+                html.Div(
+                    [
+                        html.Label("correction volume", style=styles['label']),
+                        dcc.Input(
+                            id          = "minvol-balance-input",
+                            type        = "text",
+                            placeholder = "0",
+                            value       = "0",
+                            style       = styles['input']
+                        )
+                    ],
+                    style={
+                        'flex'          : '1',
+                        'marginRight'   : '0px',
+                        # 'border'   : '1px solid #ddd',
+                    }
+                ),
 
 
-            html.Div(
-                [
-                    html.Label("start date", style=styles['label']),
-                    dcc.Input(
-                        id          = "start-date-input",
-                        type        = "text",
-                        value       = "2025-01-01",
-                        placeholder = "yyyy-mm-dd",
-                        style       = styles['input']
-                    )
-                ],
-                style = {
-                    'flex' : '1',
-                    # 'marginRight'   : '-10px',
-                    # 'border'        : '1px solid #ddd',
+                html.Div(
+                    [
+                        html.Label("start date", style=styles['label']),
+                        dcc.Input(
+                            id          = "start-date-input",
+                            type        = "text",
+                            value       = "2025-01-01",
+                            placeholder = "yyyy-mm-dd",
+                            style       = styles['input']
+                        )
+                    ],
+                    style = {
+                        'flex' : '1',
+                        # 'marginRight'   : '-10px',
+                        # 'border'        : '1px solid #ddd',
 
-                }
-            ),
-            
-            html.Div(
-                [
-                    html.Label("end date", style=styles['label']),
-                    dcc.Input(
-                        id          = "end-date-input",
-                        type        = "text",
-                        value       = "2025-02-28",
-                        placeholder = "yyyy-mm-dd",
-                        style       = styles['input']
-                    )
-                ],
-                style={
-                    'flex' : '1',
-                    # 'marginRight'   : '-10px',
-                    # 'border'        : '1px solid #ddd',
-                }
-            ),
+                    }
+                ),
+                
+                html.Div(
+                    [
+                        html.Label("end date", style=styles['label']),
+                        dcc.Input(
+                            id          = "end-date-input",
+                            type        = "text",
+                            value       = "2025-02-28",
+                            placeholder = "yyyy-mm-dd",
+                            style       = styles['input']
+                        )
+                    ],
+                    style={
+                        'flex' : '1',
+                        # 'marginRight'   : '-10px',
+                        # 'border'        : '1px solid #ddd',
+                    }
+                ),
 
-            html.Div(
-                [
-                    html.Button(
-                        "analyze charges", 
-                        id="submit-button", 
-                        style = {
-                                'width': '100%', 
-                                'height': 30, 
-                                'margin-top'        : '25px',
-                                # 'margin-left': 'auto',
-                                'margin-right'      : 'auto',
-                                'border'            : '0px solid #777777',
-                                'borderRadius'      : '0px',
-                                'background-color'  : '#333333',
-                                'color' : '#bbbbbb'
-                        }
-                    )
-                ],
-                style={
-                    'flex' : '1',
-                    'margin': 'auto',
-                }
-            ),
-
-
-        ]),
-    ]),
-
-
-    html.Div(style=styles['card'], children=[
-        html.Div(style=styles['formRow'], children=[
-
-            html.Div([
-                html.Label("invoice number", style=styles['label']),
-                dcc.Input(
-                    id="invoice-number-input",
-                    type="text",
-                    placeholder="0001/SEM/I/2024",
-                    style = styles["input"]
-                )
-            ],
-            style={
-                    'flex'          : '1',
-                    'marginRight'   : '0px',            
-                    # 'border'        : '1px solid #ddd',
-            }),
-
-
-            html.Div([
-                html.Label("week period", style=styles['label']),
-                dcc.Input(
-                    id="week-period-input",
-                    type="text",
-                    placeholder="W1 Jan 2025",
-                    style = styles['input']
-                )
-            ],
-            style={
-                    'flex'          : '1',
-                    'marginRight'   : '0px',            
-                    # 'border'        : '1px solid #ddd',
-            }),
-
-
-            html.Div([
-                html.Label("customer address", style=styles['label']),
-                        dcc.Textarea(
-                            id='customer-address-input',
-                            value='',  # Default query
-                            style={
-                                'width': '85%', 
-                                'height': 120, 
-                                'whiteSpace': 'nowrap',
-                                'overflowX': 'auto', 
-                                'padding': '10px',
-                                'background-color': '#151515',
-                                'color': '#dddddd',
-                                'resize' : 'none',
-                                'border' : 'none',
-                                'outline': 'none',
-                                'font-size': '11px',
-                                'borderRadius' : '0px'
+                html.Div(
+                    [
+                        html.Button(
+                            "analyze charges", 
+                            id="submit-button", 
+                            style = {
+                                    'width': '100%', 
+                                    'height': 30, 
+                                    'margin-top'        : '25px',
+                                    # 'margin-left': 'auto',
+                                    'margin-right'      : 'auto',
+                                    'border'            : '0px solid #777777',
+                                    'borderRadius'      : '0px',
+                                    'background-color'  : '#333333',
+                                    'color' : '#bbbbbb'
                             }
                         )
-            ],
-            style={
-                    'flex'          : '2',
-                    'marginRight'   : '0px',            
-                    # 'border'        : '1px solid #ddd',
-            }),
+                    ],
+                    style={
+                        'flex' : '1',
+                        'margin': 'auto',
+                    }
+                ),
 
-            
-            html.Div(
-                [
-                    html.Button(
-                        "generate invoice", 
-                        id="generate-invoice-button", 
-                        style = {
-                                'width': '100%', 
-                                'height': 30, 
-                                'margin-top': '10px',
-                                # 'margin-left': 'auto',
-                                # 'margin-right': 'auto',
-                                'border'            : '0px solid #777777',
-                                'borderRadius'      : '0px',
-                                'background-color'  : '#333333',
-                                'color' : '#bbbbbb'
-                        }
+
+            ]),
+        ]),
+
+
+        html.Div(style=styles['card'], children=[
+            html.Div(style=styles['formRow'], children=[
+
+                html.Div([
+                    html.Label("invoice number", style=styles['label']),
+                    dcc.Input(
+                        id="invoice-number-input",
+                        type="text",
+                        placeholder="0001/SEM/I/2024",
+                        style = styles["input"]
                     )
                 ],
                 style={
-                    'flex' : '1',
-                    'margin-top': '17px',
-                }
-            ),
+                        'flex'          : '1',
+                        'marginRight'   : '0px',            
+                        # 'border'        : '1px solid #ddd',
+                }),
 
-        ]),
-    ]),
 
-    
-    # Div for displaying the table
-    html.Div(
-        children    = [
-            html.Div(id='invoice-message', 
+                html.Div([
+                    html.Label("week period", style=styles['label']),
+                    dcc.Input(
+                        id="week-period-input",
+                        type="text",
+                        placeholder="W1 Jan 2025",
+                        style = styles['input']
+                    )
+                ],
                 style={
-                    'font-size'     : '12px', 
-                    'margin'        : 'auto', 
-                    'margin-bottom' : '15px' , 
-                    'color'         : 'skyblue',
-                    'text-align'    : 'center'
-                }
-            ),
-            dash_table.DataTable(
-                id='customer-table',
-                style_as_list_view=True,
-                style_table = {
-                    'overflowX': 'auto', 
-                    'overflowY': 'auto', 
-                    'width'   : '70%',
-                    'margin'  : 'auto',
-                    'background-color': '#222222',
-                    'color': '#aaaaaa',
-                },
-                style_cell={
-                    'textAlign'       : 'left',
-                    'fontSize'        : 11,
-                    'padding-left'    : '10px',
-                    'padding-right'   : '10px',
-                    'height'          : 'auto',
-                    'background-color': '#222222',
-                    'color'           : '#aaaaaa',
-                    # 'minWidth'      : '150px', 
-                    # 'width'         : '400px', 
-                },
-                style_header={
-                    # 'backgroundColor': 'lightgrey',
-                    'fontWeight'      : 'bold',
-                    'padding-top'     : '5px',
-                    'padding-bottom'  : '5px',
-                    'fontSize'        : 11,
-                    'maxWidth'        : '150px',
-                    'whiteSpace'      : 'normal',
-                    'overflow'        : 'hidden',
-                    'background-color': '#222222',
-                    'textOverflow'    : 'ellipsis',
-                    'font-weight'     : 'normal',
-                    'color'           : '#aaaaaa',
-                },
-                page_size=20,
-            ),
-
-            html.Div(id='pretotal_volume-message', style=styles['invoice-summary']),
-            html.Div(id='pretotal_price-message', style=styles['invoice-summary']),
-            html.Div(id='volume_balance-message', style=styles['invoice-summary']),
-            html.Div(id='price_balance-message', style=styles['invoice-summary']),
-            html.Div(id='total_volume-message', style=styles['invoice-summary']),
-            html.Div(id='total_price-message', style=styles['invoice-summary']),
-            html.Div(id='total_price_wtax-message', style=styles['invoice-summary']),
-        ],
-
-        style = {
-            'width':'100%',
-            'margin-top': '50px'
-        },
-    ),
+                        'flex'          : '1',
+                        'marginRight'   : '0px',            
+                        # 'border'        : '1px solid #ddd',
+                }),
 
 
-    dcc.Download(id="download-invoice-excel"),
+                html.Div([
+                    html.Label("customer address", style=styles['label']),
+                            dcc.Textarea(
+                                id='customer-address-input',
+                                value='',  # Default query
+                                style={
+                                    'width': '85%', 
+                                    'height': 120, 
+                                    'whiteSpace': 'nowrap',
+                                    'overflowX': 'auto', 
+                                    'padding': '10px',
+                                    'background-color': '#151515',
+                                    'color': '#dddddd',
+                                    'resize' : 'none',
+                                    'border' : 'none',
+                                    'outline': 'none',
+                                    'font-size': '11px',
+                                    'borderRadius' : '0px'
+                                }
+                            )
+                ],
+                style={
+                        'flex'          : '2',
+                        'marginRight'   : '0px',            
+                        # 'border'        : '1px solid #ddd',
+                }),
 
+                
+                html.Div(
+                    [
+                        html.Button(
+                            "generate invoice", 
+                            id="generate-invoice-button", 
+                            style = {
+                                    'width': '100%', 
+                                    'height': 30, 
+                                    'margin-top': '10px',
+                                    # 'margin-left': 'auto',
+                                    # 'margin-right': 'auto',
+                                    'border'            : '0px solid #777777',
+                                    'borderRadius'      : '0px',
+                                    'background-color'  : '#333333',
+                                    'color' : '#bbbbbb'
+                            }
+                        )
+                    ],
+                    style={
+                        'flex' : '1',
+                        'margin-top': '17px',
+                    }
+                ),
+
+            ]),
+        ]),
+
+        
+        # Div for displaying the table
+        html.Div(
+            children    = [
+                html.Div(id='invoice-message', 
+                    style={
+                        'font-size'     : '12px', 
+                        'margin'        : 'auto', 
+                        'margin-bottom' : '15px' , 
+                        'color'         : 'skyblue',
+                        'text-align'    : 'center'
+                    }
+                ),
+                dash_table.DataTable(
+                    id='customer-table',
+                    style_as_list_view=True,
+                    style_table = {
+                        'overflowX': 'auto', 
+                        'overflowY': 'auto', 
+                        'width'   : '70%',
+                        'margin'  : 'auto',
+                        'background-color': '#222222',
+                        'color': '#aaaaaa',
+                    },
+                    style_cell={
+                        'textAlign'       : 'left',
+                        'fontSize'        : 11,
+                        'padding-left'    : '10px',
+                        'padding-right'   : '10px',
+                        'height'          : 'auto',
+                        'background-color': '#222222',
+                        'color'           : '#aaaaaa',
+                        # 'minWidth'      : '150px', 
+                        # 'width'         : '400px', 
+                    },
+                    style_header={
+                        # 'backgroundColor': 'lightgrey',
+                        'fontWeight'      : 'bold',
+                        'padding-top'     : '5px',
+                        'padding-bottom'  : '5px',
+                        'fontSize'        : 11,
+                        'maxWidth'        : '150px',
+                        'whiteSpace'      : 'normal',
+                        'overflow'        : 'hidden',
+                        'background-color': '#222222',
+                        'textOverflow'    : 'ellipsis',
+                        'font-weight'     : 'normal',
+                        'color'           : '#aaaaaa',
+                    },
+                    page_size=20,
+                ),
+
+                html.Div(id='pretotal_volume-message', style=styles['invoice-summary']),
+                html.Div(id='pretotal_price-message', style=styles['invoice-summary']),
+                html.Div(id='volume_balance-message', style=styles['invoice-summary']),
+                html.Div(id='price_balance-message', style=styles['invoice-summary']),
+                html.Div(id='total_volume-message', style=styles['invoice-summary']),
+                html.Div(id='total_price-message', style=styles['invoice-summary']),
+                html.Div(id='total_price_wtax-message', style=styles['invoice-summary']),
+            ],
+
+            style = {
+                'width':'100%',
+                'margin-top': '50px'
+            },
+        ),
+
+
+        dcc.Download(id="download-invoice-excel"),
+        dcc.Download(id="download-recap-excel"),
     ],
 
     style={
@@ -1153,7 +1152,10 @@ def update_charge_table(n_clicks, customer_id, vol_balance=0, start_date="2020-0
 
 
 @app.callback(
-    Output("download-invoice-excel", "data"),
+    [
+        Output("download-invoice-excel", "data"),
+        Output("download-recap-excel", "data"),
+    ],
     [
         Input("generate-invoice-button", "n_clicks"),
     ],
@@ -1251,13 +1253,19 @@ def generate_invoice_excel(n_clicks,
     }
 
     # Generate the invoice
-    output = io.BytesIO()
+    inv_out = io.BytesIO()
 
-    with pd.ExcelWriter(output, engine='xlsxwriter') as writer:
+    with pd.ExcelWriter(inv_out, engine='xlsxwriter') as writer:
         inlay.generate_invoice(writer, invoice_data)
 
-    return dcc.send_bytes(output.getvalue(), f"invoice_{customer_id}.xlsx")
+    # generate the recap
+    recap_out = io.BytesIO()
+    res        = db.generate_charge_table(db.database_file, customer_id, start_date, end_date, vol_balance)    
+    df         = res["dataframe"].to_pandas()
+    recap_out = utils.write_df_to_excel(df, recap_out)
 
+    return  dcc.send_bytes(inv_out.getvalue(), f"invoice_{customer_id}.xlsx"), dcc.send_bytes(recap_out.getvalue(), f"recap_{customer_id}.xlsx"),
+    
 
 # Run the app
 # if __name__ == '__main__':
